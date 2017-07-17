@@ -35,6 +35,46 @@ a.dark {
   letter-spacing: 4px;
   font-size: 14px; }
 
+div.background-popup {
+  display: none;
+  width: 100%;
+  height: 2000px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: fixed;
+  top: 0px; }
+  div.background-popup div.success {
+    position: fixed;
+    top: 30%;
+    left: 35%;
+    width: 30%;
+    height: 40%;
+    background: #fff;
+    z-index: 100;
+    border-radius: 10px; }
+    div.background-popup div.success span {
+      position: absolute;
+      font-size: 18px;
+      font-family: "Open Sans";
+      top: 30%;
+      left: 15%; }
+    div.background-popup div.success button {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      z-index: 110;
+      border: 1px solid #777;
+      color: #333;
+      padding: 15px 35px;
+      background: transparent; }
+      div.background-popup div.success button:hover {
+        color: #eeb013;
+        border-color: #eeb013;
+        cursor: pointer; }
+      div.background-popup div.success button:focus {
+        outline: none; }
+
 section.wrapper {
   max-width: 1920px;
   width: 100%;
@@ -1306,7 +1346,8 @@ footer section.callback {
           width: 100%;
           background: transparent;
           border: none;
-          border-bottom: 1px solid #777; }
+          border-bottom: 1px solid #777;
+          transition: .3s; }
           footer section.callback form ul li input:focus, footer section.callback form ul li textarea:focus {
             outline: none; }
         footer section.callback form ul li label {
@@ -1351,7 +1392,11 @@ footer section.callback {
       font-family: 'Montserrat';
       font-weight: 400;
       float: right;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: .4s; }
+      footer section.callback form input[type="submit"]:hover {
+        color: #eeb013;
+        border-color: #eeb013; }
       footer section.callback form input[type="submit"]:focus {
         outline: none; }
       @media screen and (max-width: 560px) {

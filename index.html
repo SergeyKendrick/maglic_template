@@ -456,22 +456,22 @@
                         </li>
                     </ul>
                     
-                    <form action="#">
+                    <form class="form-callback" name="callback" method="POST" action="mail.php">
                         <ul>
                             <li>
-                                <label><span>* </span>Name</label><input type="text">  
+                                <label><span>* </span>Name</label><input class="name" name="Name" type="text">  
                             </li>
                             <li>
-                                <label><span>* </span>Email</label><input type="text">   
+                                <label><span>* </span>Email</label><input class="email" name="Email" type="email">   
                             </li>
                             <li>
-                                <label><span>* </span>Subject</label><input type="text">
+                                <label><span>* </span>Subject</label><input class="subject" name="Subject" type="text">
                             </li>
                             <li>
-                                <label>Content</label><textarea cols="30" rows="10"></textarea>
+                                <label>Content</label><textarea cols="30" name="Message" rows="10"></textarea>
                             </li>
                         </ul>
-                        <input type="submit" value="Send Me">
+                        <input type="submit" class="send-me"  value="Send Me">
                     </form>
                 </div>
             </section>
@@ -553,10 +553,25 @@
                 </div>
             </section>
         </footer>
+        
     </section>
+    <div class="background-popup">
+        <div class="success"><span id="textPopup"></span><button onclick="popupHide()">Okay</button></div>
+        <div class="cancel"></div>
+    </div>
+       
+    <style>
+
+    </style>
+        
     <script src="assets/js/jquery-1.11.3.min.js"></script>
     <script src="assets/slick/slick.min.js"></script>
     <script src="assets/js/jquery.spincrement.min.js"></script>  
     <script src="assets/js/main.js"></script>
+    <script>
+        function popupHide() {
+            $("div.background-popup").hide();
+        }
+    </script>
 </body>
 </html>

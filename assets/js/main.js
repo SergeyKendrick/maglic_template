@@ -90,6 +90,65 @@ $(document).ready(function() {
             scrollTop: $(el).offset().top}, 1000);
         return false; 
     });
+    
+    $('.form-callback').on('submit', function() {
+        var name = $('form.form-callback input.name').val();
+        var email = $('form.form-callback input.email').val();
+        var subject = $('form.form-callback input.subject').val();
+        var content = $('form.form-callback textarea').val();
+        var control = true;
+        
+        if (name == '') {
+            $('form.form-callback input.name').css('border-bottom', '2px solid #f00');
+            control = false;
+        }
+        if (email == '' || !email.match(/@/)) {
+            $('form.form-callback input.email').css('border-bottom', '2px solid #f00');
+            control = false; 
+        }
+        if (subject == '') {
+            $('form.form-callback input.subject').css('border-bottom', '2px solid #f00');
+            $('form.form-callback li label').innerHTML += "Lox"; 
+            control = false;
+        }
+        if (content == '') {
+            $('form.form-callback textarea').css('border-bottom', '2px solid #f00');
+            control = false;
+        }
+        
+        setTimeout(function() {
+            $('form.form-callback input.name, form.form-callback input.email,form.form-callback input.subject,form.form-callback textarea' ).css('border-bottom', '1px solid #777');
+        }, 2500);
+        
+        if(control) {
+            var formData = new FormData(document.forms.callback);
+            
+            var xhr = new XMLHttpRequest();
 
+            // 2. Конфигурируем его: GET-запрос на URL 'phones.json'
+            xhr.open('POST', 'mail.php', false);
+
+            // 3. Отсылаем запрос
+            xhr.send(formData);
+
+            // 4. Если код ответа сервера не 200, то это ошибка
+            if (xhr.status != 200) {
+              // обработать ошибку
+              alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+            } else {
+                if(xhr.responseText == 1 || xhr.responseText) {
+                    var text = document.getElementById("textPopup");
+                    text.innerHTML = "Сообщение отправлено";
+                    $("div.background-popup").show();
+                    
+                } else {
+                    text.innerHTML = "Сообщение не отправлено";
+                    $("div.background-popup").show();
+                }
+                
+            }
+        }
+        return false;
+    });
 });
 
