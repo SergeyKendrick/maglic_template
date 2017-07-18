@@ -130,14 +130,14 @@ $(document).ready(function() {
 
             // 3. Отсылаем запрос
             xhr.send(formData);
-
+            
+            var text = document.getElementById("textPopup");
             // 4. Если код ответа сервера не 200, то это ошибка
             if (xhr.status != 200) {
               // обработать ошибку
               alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
             } else {
                 if(xhr.responseText == 1 || xhr.responseText) {
-                    var text = document.getElementById("textPopup");
                     text.innerHTML = "Сообщение отправлено";
                     $("div.background-popup").show();
                     
